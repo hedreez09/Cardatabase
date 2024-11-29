@@ -9,8 +9,10 @@ import java.util.logging.Logger;
 
 @SpringBootApplication
 public class CardatabaseApplication {
-    private static final Logger logger =
-            (Logger) LoggerFactory.getLogger(CardatabaseApplication.class);
+   // private static final Logger logger =
+            //(Logger) LoggerFactory.getLogger(CardatabaseApplication.class);
+   private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CardatabaseApplication.class);
+
     public static void main(String[] args) {
         // After adding this comment the application is restarted
         SpringApplication.run(CardatabaseApplication.class, args);

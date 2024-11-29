@@ -11,21 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>cardatabase</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cardatabase</name>
-    <description>cardatabase</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <name>car database</name>
+    <description>A simple car database application</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -74,7 +61,7 @@
                 <configuration>
                     <excludes>
                         <exclude>
-                            <groupId>org.projectlombok</groupId>
+                            <groupId>org.project-lombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
