@@ -2,6 +2,8 @@ package com.example.cardatabase.domain;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Car {
     @Id
@@ -12,14 +14,20 @@ public class Car {
      private int price;
 
     public Car() {}
+   /* @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner")
+    private Owner owner;*/
+   @ManyToMany(mappedBy = "cars")
+   private Set<Owner> owners;
 
-    public Car(String brand, String model, String color, String registerNumber, int car_year, int price){
+    public Car(String brand, String model, String color, String registerNumber, int car_year, int price, Set<Owner> owners){
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.registerNumber = registerNumber;
         this.car_year = car_year;
         this.price = price;
+        this.owners = owners;
     }
     //getter and setter
     public String getBrand() {
@@ -59,6 +67,23 @@ public class Car {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public Set<Owner> getOwners() {
+        return owners;
+    }
+    public void setOwners(Set<Owner> owners) {
+        this.owners = owners;
+    }
+
+
+
+    //Getter and setter
+    /*public Owner getOwner() {
+        return owner;
+    }
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }*/
 }
 
 
