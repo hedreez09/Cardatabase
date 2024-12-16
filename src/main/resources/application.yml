@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cardatabase
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+
