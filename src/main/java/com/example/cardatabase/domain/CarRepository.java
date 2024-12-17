@@ -10,9 +10,9 @@ import java.util.List;
 //import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
 
 public interface CarRepository extends CrudRepository<Car, Long>, PagingAndSortingRepository<Car, Long> {
-    int page = 10;
+    /*int page = 10;
 
     @Query("select c from Car c where c.brand like %?1")
-    List<Car> findByBrandEndsWith(String brand);
+    List<Car> findByBrandEndsWith(String brand);*/
 
 }

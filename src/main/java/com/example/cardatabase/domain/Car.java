@@ -1,10 +1,12 @@
 package com.example.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Car {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -14,20 +16,21 @@ public class Car {
      private int price;
 
     public Car() {}
-   /* @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner")
-    private Owner owner;*/
-   @ManyToMany(mappedBy = "cars")
-   private Set<Owner> owners;
+    @JsonIgnoreProperties("cars") // Avoid circular serialization if Owner has a reference to Car
+    private Owner owner;
+   /*@ManyToMany(mappedBy = "cars")
+   private Set<Owner> owners;*/
 
-    public Car(String brand, String model, String color, String registerNumber, int car_year, int price, Set<Owner> owners){
+    public Car(String brand, String model, String color, String registerNumber, int car_year, int price, Owner owner){
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.registerNumber = registerNumber;
         this.car_year = car_year;
         this.price = price;
-        this.owners = owners;
+        this.owner = owner;
     }
     //getter and setter
     public String getBrand() {
@@ -68,22 +71,22 @@ public class Car {
         this.price = price;
     }
 
-    public Set<Owner> getOwners() {
+    /*public Set<Owner> getOwners() {
         return owners;
     }
     public void setOwners(Set<Owner> owners) {
         this.owners = owners;
-    }
+    }*/
 
 
 
     //Getter and setter
-    /*public Owner getOwner() {
+    public Owner getOwner() {
         return owner;
     }
     public void setOwner(Owner owner) {
         this.owner = owner;
-    }*/
+    }
 }
 
 

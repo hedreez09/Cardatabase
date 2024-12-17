@@ -1,5 +1,8 @@
 package com.example.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -14,13 +17,15 @@ public class Owner {
     private String firstname, lastname;
     public Owner() {}
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+   /* @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "car_owner", joinColumns = { @JoinColumn(name =
             "ownerid") }, inverseJoinColumns = { @JoinColumn(name = "id") })
-    private Set<Car> cars = new HashSet<Car>(0);
+    private Set<Car> cars = new HashSet<Car>(0);*/
 
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy="owner")
-    private List<Car> cars;*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="owner")
+    @JsonIgnoreProperties("cars") // Avoid circular serialization if Owner has a reference to Car
+    //@JsonBackReference
+    private List<Car> cars;
     public Owner(String firstname, String lastname) {
         super();
         this.firstname = firstname;
@@ -45,16 +50,16 @@ public class Owner {
         this.lastname = lastname;
     }
 
-    public Set<Car> getCars() {
+   /* public Set<Car> getCars() {
         return cars;
     }
     public void setCars(Set<Car> cars) {
         this.cars = cars;
-    }
-    /*public List<Car> getCars() {
+    }*/
+    public List<Car> getCars() {
         return cars;
     }
     public void setCars(List<Car> cars) {
         this.cars = cars;
-    }*/
+    }
 }
