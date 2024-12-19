@@ -3,6 +3,7 @@ package com.example.cardatabase.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Owner {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -23,8 +25,9 @@ public class Owner {
     private Set<Car> cars = new HashSet<Car>(0);*/
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="owner")
-    @JsonIgnoreProperties("cars") // Avoid circular serialization if Owner has a reference to Car
-    //@JsonBackReference
+//    @JsonIgnore //Properties("cars") // Avoid circular serialization if Owner has a reference to Car
+//    @JsonBackReference
+   // @JsonManagedReference
     private List<Car> cars;
     public Owner(String firstname, String lastname) {
         super();

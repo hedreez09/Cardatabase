@@ -1,5 +1,6 @@
 package com.example.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -18,7 +19,7 @@ public class Car {
     public Car() {}
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner")
-    @JsonIgnoreProperties("cars") // Avoid circular serialization if Owner has a reference to Car
+    @JsonIgnore //Properties("cars") // Avoid circular serialization if Owner has a reference to Car
     private Owner owner;
    /*@ManyToMany(mappedBy = "cars")
    private Set<Owner> owners;*/

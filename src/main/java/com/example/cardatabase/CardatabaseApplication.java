@@ -34,35 +34,35 @@ public class CardatabaseApplication {
     CommandLineRunner runner(){
         return args -> {
             //owner Objects
-            Owner owner1 = new Owner("John" , "Johnson");
-            Owner owner2 = new Owner("Mary" , "Robinson");
-            orepository.save(owner1);
-            orepository.save(owner2);
-
-           /* Set<Owner> owners1 = new HashSet<>();
-            owners1.add(owner1);
-
-            Set<Owner> owners2 = new HashSet<>();
-            owners2.add(owner2);
-
-            Set<Owner> owners3 = new HashSet<>();
-            owners3.add(owner2);
-
-            Set<Owner> owners4 = new HashSet<>();
-            owners4.add(owner1);*/
-            // Add car object with link to owner and save to DB
-            Car car = new Car("Ford", "Mustang", "Red",
-                    "ADF-1121", 2017, 59000, owner1);
-            repository.save(car);
-            car = new Car("Nissan", "Leaf", "White",
-                    "SSJ-3002", 2014, 29000, owner2);
-            repository.save(car);
-            car = new Car("Toyota", "Prius", "Silver",
-                    "KKO-0212", 2018, 39000, owner2);
-            repository.save(car);
-            car = new Car("Toyota", "Tundra", "Blue",
-                    "KKO-0212", 2018, (90000), owner1);
-            repository.save(car);
+//            Owner owner1 = new Owner("John" , "Johnson");
+//            Owner owner2 = new Owner("Mary" , "Robinson");
+//            orepository.save(owner1);
+//            orepository.save(owner2);
+//
+//           /* Set<Owner> owners1 = new HashSet<>();
+//            owners1.add(owner1);
+//
+//            Set<Owner> owners2 = new HashSet<>();
+//            owners2.add(owner2);
+//
+//            Set<Owner> owners3 = new HashSet<>();
+//            owners3.add(owner2);
+//
+//            Set<Owner> owners4 = new HashSet<>();
+//            owners4.add(owner1);*/
+//             Add car object with link to owner and save to DB
+//            Car car = new Car("Ford", "Mustang", "Red",
+//                    "ADF-1121", 2017, 59000, owner1);
+//            repository.save(car);
+//            car = new Car("Nissan", "Leaf", "White",
+//                    "SSJ-3002", 2014, 29000, owner2);
+//            repository.save(car);
+//            car = new Car("Toyota", "Prius", "Silver",
+//                    "KKO-0212", 2018, 39000, owner2);
+//            repository.save(car);
+//            car = new Car("Toyota", "Tundra", "Blue",
+//                    "KKO-0212", 2018, (90000), owner1);
+//            repository.save(car);
         };
     }
 
