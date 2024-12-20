@@ -19,7 +19,7 @@ public class Car {
     public Car() {}
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner")
-    @JsonIgnore //Properties("cars") // Avoid circular serialization if Owner has a reference to Car
+    //@JsonIgnore //Properties("cars") // Avoid circular serialization if Owner has a reference to Car
     private Owner owner;
    /*@ManyToMany(mappedBy = "cars")
    private Set<Owner> owners;*/
