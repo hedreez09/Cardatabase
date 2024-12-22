@@ -4,11 +4,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 //import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
-
+@Repository
 public interface CarRepository extends CrudRepository<Car, Long>, PagingAndSortingRepository<Car, Long> {
     /*int page = 10;
 
