@@ -47,8 +47,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/api/**").authenticated() // Protect API endpoints
                         .anyRequest().permitAll() // Allow other requests without authentication
-                ).addFilterBefore(new LoginFilter("/login", authenticationManager),
-                        UsernamePasswordAuthenticationFilter.class);
+                );
                 //.httpBasic(); // Use HTTP Basic authentication for simplicity
 
         return http.build();
