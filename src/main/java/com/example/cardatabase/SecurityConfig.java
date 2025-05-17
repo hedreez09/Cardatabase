@@ -26,9 +26,11 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private final UserDetailServiceImpl userDetailsService;
+    private final AuthenticationFilter authenticationFilter;
 
-    public SecurityConfig(UserDetailServiceImpl userDetailsService) {
+    public SecurityConfig(UserDetailServiceImpl userDetailsService, AuthenticationFilter authenticationFilter) {
         this.userDetailsService = userDetailsService;
+        this.authenticationFilter = authenticationFilter;
     }
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
@@ -47,7 +49,8 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/api/**").authenticated() // Protect API endpoints
                         .anyRequest().permitAll() // Allow other requests without authentication
-                );
+
+                ).addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
                 //.httpBasic(); // Use HTTP Basic authentication for simplicity
 
         return http.build();

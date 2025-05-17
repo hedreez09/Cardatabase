@@ -46,6 +46,6 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
             HttpServletRequest req,
             HttpServletResponse res, FilterChain chain,
             Authentication auth) throws IOException {
-        AuthenticationService.addToken(res, auth.getName());
+        AuthenticationService.addToken(auth.getName());
     }
 }

@@ -17,10 +17,10 @@ import static java.util.Collections.emptyList;
 
 public class AuthenticationService {
     static final long EXPIRATIONTIME = 864_000_00L; // 1 day in milliseconds
-    static final String SIGNINGKEY = Base64.getEncoder().encodeToString("V3rYE3cuReK3yMW1thL0tsofR@nd0mCh@rTT0MeetHS512Secur3Req8u1r3m3nt".getBytes());
+    public static final String SIGNINGKEY = Base64.getEncoder().encodeToString("V3rYE3cuReK3yMW1thL0tsofR@nd0mCh@rTT0MeetHS512Secur3Req8u1r3m3nt".getBytes());
     static final String PREFIX = "Bearer";
 
-    public static Object addToken(HttpServletResponse res, String username) {
+    public static Object addToken(String username) {
         try{
             Key key = Keys.hmacShaKeyFor(SIGNINGKEY.getBytes(StandardCharsets.UTF_8));
             String JwtToken = Jwts.builder()
@@ -28,8 +28,8 @@ public class AuthenticationService {
                     .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
                     .signWith(key)
                     .compact();
-            res.addHeader("Authorization", PREFIX + " " + JwtToken);
-            res.addHeader("Access-Control-Expose-Headers", "Authorization");
+//            res.addHeader("Authorization", PREFIX + " " + JwtToken);
+//            res.addHeader("Access-Control-Expose-Headers", "Authorization");
             return JwtToken;
         }catch(Exception e){
             e.printStackTrace();

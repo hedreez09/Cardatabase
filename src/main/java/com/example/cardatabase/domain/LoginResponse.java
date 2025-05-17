@@ -1,9 +1,15 @@
 package com.example.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class LoginResponse {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String token;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String role;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String message;
 
     public LoginResponse(String token, String username, String role) {
@@ -38,4 +44,8 @@ public LoginResponse(String message) {
     public void setRole(String role) {
         this.role = role;
     }
+    public String getMessage() {
+        return message;
+    }
+
 }
